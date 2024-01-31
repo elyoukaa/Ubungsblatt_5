@@ -89,7 +89,11 @@ public class Godfavour implements Command {
         player.gfLevel = level;
         player.setCost(getCost(level));
         CommandHandler.phase++;
-        OUTPUT_MESSAGE[0] = Player.playersTurn();
+        if (CommandHandler.phase == 3) {
+            OUTPUT_MESSAGE[0] = Player.playersTurn();
+        } else {
+            OUTPUT_MESSAGE[0] = "OK, all players are now ready to evaluate!";
+        }
         return true;
     }
 }
