@@ -58,7 +58,7 @@ public class CommandHandler {
     }
     private boolean assessCommandLine(String[] split) {
         if (split.length != 6) {
-            System.out.println("Illegal amount of arguments!");
+            System.out.println(ERROR_PREFIX + "Illegal amount of arguments!");
             this.running = false;
             return false;
         }
@@ -67,14 +67,14 @@ public class CommandHandler {
         String secondName = split[2];
         String[] secondGodFavors = split[3].split(";");
         if (godfavors.length != 3 || secondGodFavors.length != 3) {
-            System.out.println("Illegal god-favors!");
+            System.out.println(ERROR_PREFIX + "Illegal god-favors!");
             this.running = false;
             return false;
         }
         String health = split[4];
         String power = split[5];
         if (firstName.contains(";") || secondName.contains(";")) {
-            System.out.println("Names don't contain a semicolon!");
+            System.out.println(ERROR_PREFIX + "Names don't contain a semicolon!");
             this.running = false;
             return false;
         }
@@ -84,7 +84,7 @@ public class CommandHandler {
         HashSet<String> godFavorTwo = new HashSet<>();
         for (int i = 0; i < godfavors.length; i++) {
             if (!godFavorsAvailable.contains(godfavors[i]) || !(godFavorsAvailable.contains(secondGodFavors[i]))) {
-                System.out.println("This god-favor does not exist!");
+                System.out.println(ERROR_PREFIX + "This god-favor does not exist!");
                 this.running = false;
                 return false;
             }
@@ -92,7 +92,7 @@ public class CommandHandler {
             godFavorTwo.add(secondGodFavors[i]);
         }
         if (godFavorOne.size() != 3 || godFavorTwo.size() != 3) {
-            System.out.println("No duplicate god-favors allowed!");
+            System.out.println(ERROR_PREFIX + "No duplicate god-favors allowed!");
             this.running = false;
             return false;
         }
