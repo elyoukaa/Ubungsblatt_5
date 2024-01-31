@@ -96,9 +96,7 @@ public class Godfavour implements Command {
         setGodFavor(player, getSign());
         setEffect(player, getEffect(level));
         player.gfLevel = level;
-        if (player.getCost() == 0) {
-            player.setCost(getCost(level));
-        }
+        player.setCost(getCost(level));
         CommandHandler.phase++;
         if (CommandHandler.phase == 3) {
             OUTPUT_MESSAGE[0] = Player.playersTurn();
