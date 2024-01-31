@@ -25,6 +25,10 @@ public class TurnCommand implements Command {
      */
     @Override
     public boolean execute(Player player, String[] commandArguments) {
+        if (CommandHandler.phase < 2 || CommandHandler.phase > 3) {
+            OUTPUT_MESSAGE[1] = "this command can't be used yet!";
+            return false;
+        }
         if (commandArguments.length != getArgumentNumber()) {
             OUTPUT_MESSAGE[1] = "Illegal amount of arguments!";
             return false;

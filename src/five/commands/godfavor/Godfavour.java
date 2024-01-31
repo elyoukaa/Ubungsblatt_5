@@ -68,8 +68,13 @@ public class Godfavour implements Command {
             OUTPUT_MESSAGE[1] = "no such god-favor move!";
             return false;
         }
-        int level = Integer.parseInt(commandArguments[1]);
-        return godfavors.get(commandArguments[0]).execute(player, level);
+        try {
+            int level = Integer.parseInt(commandArguments[1]);
+            return godfavors.get(commandArguments[0]).execute(player, level);
+        } catch (NumberFormatException notInt) {
+            OUTPUT_MESSAGE[1] = "not an int!";
+            return false;
+        }
     }
 
     /**
