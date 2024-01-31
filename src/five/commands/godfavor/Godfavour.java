@@ -84,6 +84,10 @@ public class Godfavour implements Command {
             OUTPUT_MESSAGE[1] = "unable to use this move!";
             return false;
         }
+        if (level < 1 || level > 3) {
+            OUTPUT_MESSAGE[1] = "illegal level!";
+            return false;
+        }
         setGodFavor(player, getSign());
         setEffect(player, getEffect(level));
         player.gfLevel = level;

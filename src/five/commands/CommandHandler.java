@@ -179,7 +179,7 @@ public class CommandHandler {
             } else {
                 message = this.commands.get(commandName).OUTPUT_MESSAGE[1];
                 if (!message.equals("quit")) {
-                    System.out.println("ERROR: " + message);
+                    System.out.println(ERROR_PREFIX + message);
                 }
             }
         }
