@@ -17,4 +17,12 @@ public class ThrymrsTheft extends Godfavour {
     String getSign() {
         return sign;
     }
+    @Override
+    int getEffect(int level) {
+        return effect[level - 1];
+    }
+    @Override
+    int getCost(int level) {
+        return cost[level - 1];
+    }
 }

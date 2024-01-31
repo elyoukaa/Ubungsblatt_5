@@ -29,6 +29,12 @@ public class Godfavour implements Command {
     String getSign() {
         return sign;
     }
+    int getEffect(int level) {
+        return effect[level - 1];
+    }
+    int getCost(int level) {
+        return cost[level - 1];
+    }
     static void setGodFavor(Player player, String godfavor) {
         player.setGodfavor(godfavor);
     }
@@ -79,9 +85,9 @@ public class Godfavour implements Command {
             return false;
         }
         setGodFavor(player, sign);
-        setEffect(player, effect[level - 1]);
+        setEffect(player, getEffect(level));
         player.gfLevel = level;
-        player.setCost(cost[level - 1]);
+        player.setCost(getCost(level));
         CommandHandler.phase++;
         OUTPUT_MESSAGE[0] = Player.playersTurn();
         return true;
