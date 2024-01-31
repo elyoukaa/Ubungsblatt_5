@@ -105,7 +105,7 @@ public class EvaluateCommand implements Command {
                 int damageReceived = damage(defender.getCloseAttack(), attacker.getCloseShield())
                         + damage(defender.getRangedAttack(), attacker.getRangedShield());
                 damageReceived += thorsHammerDamage;
-                long maxDamageReceived = Math.min(damageReceived, attacker.getHP());
+                int maxDamageReceived = (int) Math.min(damageReceived, attacker.getHP());
                 attacker.changeGP(maxDamageReceived * attacker.getGfEffect());
             default:
                 break;
