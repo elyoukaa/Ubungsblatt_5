@@ -40,7 +40,7 @@ public class Godfavour implements Command {
      * @return whether argument-wise the god-favour can be used.
      */
     public boolean execute(Player player, String[] commandArguments) {
-        if (CommandHandler.phase < 2 || CommandHandler.phase > 4) {
+        if (CommandHandler.phase < 2 || CommandHandler.phase > 3) {
             OUTPUT_MESSAGE[1] = "wrong command!";
             return false;
         }
@@ -80,6 +80,7 @@ public class Godfavour implements Command {
         player.gfLevel = level;
         player.setCost(cost[level - 1]);
         OUTPUT_MESSAGE[0] = Player.playersTurn();
+        CommandHandler.phase++;
         return true;
     }
 }

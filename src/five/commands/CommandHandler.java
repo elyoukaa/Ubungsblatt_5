@@ -170,7 +170,7 @@ public class CommandHandler {
         } else {
             String message;
             if (this.commands.get(commandName).execute(currentlyPlaying(), commandArguments)) {
-                phase++;
+                //phase++;
                 message = this.commands.get(commandName).OUTPUT_MESSAGE[0];
                 if (message == null) {
                     this.running = false;

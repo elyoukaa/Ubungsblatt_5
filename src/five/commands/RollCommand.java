@@ -78,6 +78,7 @@ public class RollCommand implements Command {
             }
         }
         OUTPUT_MESSAGE[0] = Player.playersTurn();
+        CommandHandler.phase++;
         return true;
     }
 }
