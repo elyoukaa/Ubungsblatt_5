@@ -155,7 +155,7 @@ public class EvaluateCommand implements Command {
         } else if (Player.getPlayerOne().getHP() <= 0 && Player.getPlayerTwo().getHP() <= 0) {
             OUTPUT_MESSAGE[0] = "draw";
         } else if (Player.getPlayerOne().getHP() <= 0) {
-            OUTPUT_MESSAGE[0] = Player.getPlayerTwo().getName() + " wins!";
+            OUTPUT_MESSAGE[0] = Player.getPlayerTwo().getName() + " wins!" + Player.getPlayerOne().getHP();
         } else if (Player.getPlayerTwo().getHP() <= 0) {
             OUTPUT_MESSAGE[0] = Player.getPlayerOne().getName() + " wins!";
         }
