@@ -49,8 +49,10 @@ public class EvaluateCommand implements Command {
         theftE -= (theftS + theftE);
         if (theftS > 0 && eddie.getGodPower() > 0) {
             sam.changeGP(Math.min(theftS, eddie.getGodPower()));
+            eddie.changeGP(Math.min(theftS, eddie.getGodPower()) * (-1));
         } else if (theftE > 0 && sam.getGodPower() > 0) {
             eddie.changeGP(Math.min(theftE, sam.getGodPower()));
+            sam.changeGP(Math.min(theftE, sam.getGodPower()) * (-1));
         }
         int damageReceivedS = damage(eddie.getCloseAttack(), sam.getCloseShield())
                 + damage(eddie.getRangedAttack(), sam.getRangedShield());
@@ -72,7 +74,7 @@ public class EvaluateCommand implements Command {
         if (attacker.getHP() <= 0 && !(attacker.getGodfavor()).equals("TS")) {
             return;
         }
-        attacker.changeGP(attacker.getGodPower() - attacker.getCost());
+        attacker.changeGP(attacker.getCost() * (-1));
         switch (attacker.getGodfavor()) {
             case "TT":
                 if (attacker.gfLevel >= defender.gfLevel) {
