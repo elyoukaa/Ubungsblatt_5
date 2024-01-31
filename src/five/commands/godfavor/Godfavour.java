@@ -81,10 +81,10 @@ public class Godfavour implements Command {
      */
     public boolean execute(Player player, int level) {
         if (!player.playerGodFavor.contains(getSign())) {
-            OUTPUT_MESSAGE[1] = "unable to use this move!" + sign;
+            OUTPUT_MESSAGE[1] = "unable to use this move!";
             return false;
         }
-        setGodFavor(player, sign);
+        setGodFavor(player, getSign());
         setEffect(player, getEffect(level));
         player.gfLevel = level;
         player.setCost(getCost(level));
