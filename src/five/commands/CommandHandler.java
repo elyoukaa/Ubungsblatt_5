@@ -100,17 +100,17 @@ public class CommandHandler {
             int hp = Integer.parseInt(health);
             int godPower = Integer.parseInt(power);
             if (hp < 5) {
-                System.out.println("starting hp can't be low than 5!");
+                System.out.println(ERROR_PREFIX + "starting hp can't be lower than 5!");
                 this.running = false;
                 return false;
             } else if (godPower < 0) {
-                System.out.println("God-Power can't be negative!");
+                System.out.println(ERROR_PREFIX + "God-Power can't be negative!");
                 this.running = false;
                 return false;
             }
             return true;
         } catch (NumberFormatException notInt) {
-            System.out.println("health and power must be integers!");
+            System.out.println(ERROR_PREFIX + "health and power must be integers!");
             this.running = false;
             return false;
         }
