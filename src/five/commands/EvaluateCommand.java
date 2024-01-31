@@ -149,7 +149,8 @@ public class EvaluateCommand implements Command {
         reset();
         if (Player.getPlayerOne().getHP() > 0 && Player.getPlayerOne().getHP() > 0) {
             PrintCommand printCommand = new PrintCommand();
-            printCommand.execute(player, null);
+            String[] arr = new String[0];
+            printCommand.execute(player, arr);
             OUTPUT_MESSAGE[0] = Player.playerOneTurn;
         } else if (Player.getPlayerOne().getHP() <= 0 && Player.getPlayerTwo().getHP() <= 0) {
             OUTPUT_MESSAGE[0] = "draw";
