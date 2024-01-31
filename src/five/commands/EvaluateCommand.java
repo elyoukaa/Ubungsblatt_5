@@ -134,7 +134,11 @@ public class EvaluateCommand implements Command {
 
     @Override
     public boolean execute(Player player, String[] commandArguments) {
-        if (commandArguments.length == 0) {
+        if (CommandHandler.phase != 4) {
+            OUTPUT_MESSAGE[1] = "illegal command!";
+            return false;
+        }
+        if (commandArguments.length != getArgumentNumber()) {
             OUTPUT_MESSAGE[1] = "illegal number of arguments!";
             return false;
         }
