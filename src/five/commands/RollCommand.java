@@ -1,6 +1,12 @@
 package five.commands;
 import five.model.Player;
-public class RollCommand implements Command{
+
+/**
+ * class for roll-command.
+ * @author uuxxo
+ */
+public class RollCommand implements Command {
+    static final int ARGUMENT_NUMBER = 6;
     private static final int ADD_ONE = 1;
     private static final String AXE_MOVE = "MA";
     private static final String HELMET_MOVE = "MD";
@@ -12,9 +18,13 @@ public class RollCommand implements Command{
     private static final String STEAL_MOVE = "ST";
     private static final String GP_STEAL_MOVE = "GST";
     private static boolean moveExists = true;
-    final static int argumentNumber = 6;
+
+    /**
+     * gets the number of arguments required.
+     * @return required number.
+     */
     public int getArgumentNumber() {
-        return argumentNumber;
+        return ARGUMENT_NUMBER;
     }
     private void simulateFightElements(Player player, String fightElement) {
         switch (fightElement) {
@@ -45,6 +55,13 @@ public class RollCommand implements Command{
                 moveExists = false;
         }
     }
+
+    /**
+     * executes the roll command.
+     * @param player the player that is on turn.
+     * @param commandArguments the string arguments needed for the command.
+     * @return true, if the command was executed successfully.
+     */
     public boolean execute(Player player, String[] commandArguments) {
         if (CommandHandler.phase >= 2) {
             OUTPUT_MESSAGE[1] = "wrong command!";
