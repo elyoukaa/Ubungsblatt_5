@@ -72,6 +72,7 @@ public class EvaluateCommand implements Command {
         if (attacker.getHP() <= 0 && !(attacker.getGodfavor()).equals("TS")) {
             return;
         }
+        attacker.changeGP(attacker.getGodPower() - attacker.getCost());
         switch (attacker.getGodfavor()) {
             case "TT":
                 if (attacker.gfLevel >= defender.gfLevel) {
@@ -143,7 +144,7 @@ public class EvaluateCommand implements Command {
             return false;
         }
         evaluateDices(Player.getPlayerOne(), Player.getPlayerTwo());
-        godFavorOrder(Player.getPlayerOne(), Player.getPlayerOne());
+        godFavorOrder(Player.getPlayerOne(), Player.getPlayerTwo());
         useGodfavor(firstPlayer, secondPlayer);
         useGodfavor(secondPlayer, firstPlayer);
         reset();
