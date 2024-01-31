@@ -50,7 +50,6 @@ public class EvaluateCommand implements Command {
         if (theftS > 0 && eddie.getGodPower() > 0) {
             sam.changeGP(Math.min(theftS, eddie.getGodPower()));
             eddie.changeGP(Math.min(theftS, eddie.getGodPower()) * (-1));
-            System.out.print("");
         } else if (theftE > 0 && sam.getGodPower() > 0) {
             eddie.changeGP(Math.min(theftE, sam.getGodPower()));
             sam.changeGP(Math.min(theftE, sam.getGodPower()) * (-1));
@@ -155,7 +154,7 @@ public class EvaluateCommand implements Command {
         String[] arr = new String[0];
         printCommand.execute(player, arr);
         OUTPUT_MESSAGE[0] += "\n";
-        if (Player.getPlayerOne().getHP() > 0 && Player.getPlayerOne().getHP() > 0) {
+        if (Player.getPlayerOne().getHP() > 0 && Player.getPlayerTwo().getHP() > 0) {
             OUTPUT_MESSAGE[0] += Player.playerOneTurn;
         } else if (Player.getPlayerOne().getHP() <= 0 && Player.getPlayerTwo().getHP() <= 0) {
             OUTPUT_MESSAGE[0] += "draw";
