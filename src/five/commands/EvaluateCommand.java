@@ -148,6 +148,8 @@ public class EvaluateCommand implements Command {
         useGodfavor(secondPlayer, firstPlayer);
         reset();
         if (Player.getPlayerOne().getHP() > 0 && Player.getPlayerOne().getHP() > 0) {
+            PrintCommand printCommand = new PrintCommand();
+            printCommand.execute(player, null);
             OUTPUT_MESSAGE[0] = Player.playerOneTurn;
         } else if (Player.getPlayerOne().getHP() <= 0 && Player.getPlayerTwo().getHP() <= 0) {
             OUTPUT_MESSAGE[0] = "draw";
