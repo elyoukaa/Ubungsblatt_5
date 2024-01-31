@@ -19,17 +19,19 @@ public class EvaluateCommand implements Command {
      * @param playerTwo second player.
      */
     public void godFavorOrder(Player playerOne, Player playerTwo) {
-        for (int i = 0; i < MOVE_NAMES.length; i++) {
-            if (playerOne.getGodfavor().equals(MOVE_NAMES[i])) {
+        for (String moveName : MOVE_NAMES) {
+            if (playerOne.getGodfavor().equals(moveName)) {
                 firstPlayer = playerOne;
                 secondPlayer = playerTwo;
-                break;
-            } else if (playerTwo.getGodfavor().equals(MOVE_NAMES[i])) {
+                return;
+            } else if (playerTwo.getGodfavor().equals(moveName)) {
                 firstPlayer = playerTwo;
                 secondPlayer = playerOne;
-                break;
+                return;
             }
         }
+        firstPlayer = Player.getPlayerOne();
+        secondPlayer = Player.getPlayerTwo();
     }
 
     @Override
