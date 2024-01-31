@@ -50,7 +50,6 @@ public class EvaluateCommand implements Command {
         if (theftS > 0 && eddie.getGodPower() > 0) {
             sam.changeGP(Math.min(theftS, eddie.getGodPower()));
             eddie.changeGP(Math.min(theftS, eddie.getGodPower()) * (-1));
-            System.out.println("ZUI");
         } else if (theftE > 0 && sam.getGodPower() > 0) {
             eddie.changeGP(Math.min(theftE, sam.getGodPower()));
             sam.changeGP(Math.min(theftE, sam.getGodPower()) * (-1));

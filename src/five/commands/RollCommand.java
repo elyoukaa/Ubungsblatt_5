@@ -48,7 +48,6 @@ public class RollCommand implements Command {
                 break;
             case GP_STEAL_MOVE:
                 player.changeGP(ADD_ONE);
-                break;
             case STEAL_MOVE:
                 player.setStealingPoints(player.getStealingPoints() + ADD_ONE);
                 break;
