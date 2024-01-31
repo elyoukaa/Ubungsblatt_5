@@ -44,7 +44,7 @@ public class Godfavour implements Command {
             OUTPUT_MESSAGE[1] = "wrong command!";
             return false;
         }
-        if (commandArguments.length != 1) {
+        if (commandArguments.length != getArgumentNumber()) {
             OUTPUT_MESSAGE[1] = "illegal number of arguments!";
             return false;
         }
@@ -56,7 +56,7 @@ public class Godfavour implements Command {
         godfavors.put("VB", new VarsBond());
         godfavors.put("MW", new MimirsWisdom());
         if (!godfavors.containsKey(commandArguments[0])) {
-            OUTPUT_MESSAGE[1] = "no such godfavor move!";
+            OUTPUT_MESSAGE[1] = "no such god-favor move!";
             return false;
         }
         int level = Integer.parseInt(commandArguments[1]);
