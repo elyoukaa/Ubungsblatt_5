@@ -16,7 +16,7 @@ public final class Main {
      */
     public static void main(String[] args) {
 
-        CommandHandler commandHandler = new CommandHandler();
+        CommandHandler commandHandler = new CommandHandler(args);
         commandHandler.handleUserInput();
     }
 }

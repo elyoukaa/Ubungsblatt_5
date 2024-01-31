@@ -36,14 +36,17 @@ public class CommandHandler {
     private static final String QUIT_COMMAND_NAME = "quit";
     private static final String EVAL_COMMAND_NAME = "evaluate";
     private boolean running = false;
+    private String[] commandLine;
     private final Map<String, Command> commands;
 
     /**
-     * constructor. Adds the commands and the corresponding objects into HashMap.
+     * constructor. innitializes HashMap and adds the god-favor tags.
+     * @param commandLine the command line argument args.
      */
-    public CommandHandler() {
+    public CommandHandler(String[] commandLine) {
         this.commands = new HashMap<>();
         this.initCommands();
+        this.commandLine = commandLine;
     }
     private static void addGF(HashSet<String> set) {
         set.add("TT");
@@ -53,8 +56,7 @@ public class CommandHandler {
         set.add("IR");
         set.add("HW");
     }
-    private boolean assessFirstLine(String firstLine) {
-        String[] split = firstLine.split(" ");
+    private boolean assessCommandLine(String[] split) {
         if (split.length != 6) {
             System.out.println("Illegal amount of arguments!");
             this.running = false;
@@ -121,11 +123,10 @@ public class CommandHandler {
         this.running = true;
 
         try (Scanner scanner = new Scanner(System.in)) {
-            String firstLine = scanner.nextLine();
-            if (!assessFirstLine(firstLine)) {
+            if (!assessCommandLine(this.commandLine)) {
                 return;
             }
-            String[] split = firstLine.split(" ");
+            String[] split = commandLine;
             String firstName = split[0];
             String[] godfavors = split[1].split(";");
 
