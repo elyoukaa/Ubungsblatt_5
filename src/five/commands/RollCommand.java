@@ -1,5 +1,5 @@
-package Exercise_5.Commands;
-import Exercise_5.model.Player;
+package five.commands;
+import five.model.Player;
 public class RollCommand implements Command{
     private static final int ADD_ONE = 1;
     private static final String AXE_MOVE = "MA";
@@ -12,8 +12,6 @@ public class RollCommand implements Command{
     private static final String STEAL_MOVE = "ST";
     private static final String GP_STEAL_MOVE = "GST";
     private static boolean moveExists = true;
-    String SUCCESS_MESSAGE ;
-    String FAILURE_MESSAGE;
     final static int argumentNumber = 6;
     public int getArgumentNumber() {
         return argumentNumber;
@@ -43,17 +41,17 @@ public class RollCommand implements Command{
             case STEAL_MOVE:
                 player.setStealingPoints(player.getStealingPoints() + ADD_ONE);
             default:
-                FAILURE_MESSAGE = "non-existing move!";
+                OUTPUT_MESSAGE[1] = "non-existing move!";
                 moveExists = false;
         }
     }
     public boolean execute(Player player, String[] commandArguments) {
         if (CommandHandler.phase >= 2) {
-            FAILURE_MESSAGE = "wrong command!";
+            OUTPUT_MESSAGE[1] = "wrong command!";
             return false;
         }
         if (commandArguments.length != getArgumentNumber()) {
-            FAILURE_MESSAGE = "illegal number of arguments!";
+            OUTPUT_MESSAGE[1] = "illegal number of arguments!";
             return false;
         }
         for (int i = 0; i < commandArguments.length; i++) {
@@ -62,7 +60,7 @@ public class RollCommand implements Command{
                 return false;
             }
         }
-        SUCCESS_MESSAGE = Player.playersTurn();
+        OUTPUT_MESSAGE[0] = Player.playersTurn();
         return true;
     }
 }

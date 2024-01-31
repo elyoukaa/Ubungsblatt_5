@@ -1,11 +1,13 @@
-package Exercise_5.Commands.Godfavor;
+package five.commands.godfavor;
 
-import Exercise_5.model.Player;
-
-public class ThorsHammer extends Godfavour{
-    static final String sign = "TS";
+/**
+ * class for god-favor Thor's Hammer (Thor's Blitz).
+ * @author uuxxo
+ */
+public class ThorsHammer extends Godfavour {
     static int level;
-    int cost[] = { 4, 8, 12 };
+    String sign = "TS";
+    int[] cost = { 4, 8, 12 };
     /**
      * Thor's Hammer effect: deal effect[level] damage. Works even if health points reach zero.
      */

@@ -1,24 +1,30 @@
-package Exercise_5.Commands;
-import Exercise_5.Commands.Godfavor.Godfavour;
-import Exercise_5.Commands.Godfavor.ThrymrsTheft;
-import Exercise_5.model.Player;
-public class EvaluateCommand implements Command{
-    static final String[] moveNames = { "TT", "TS", "IR", "HW", "VB", "MW" };
+package five.commands;
+import five.commands.godfavor.Godfavour;
+import five.model.Player;
+
+/**
+ * objects of this class execute the evaluate command.
+ * @author uuxxo
+ */
+public class EvaluateCommand implements Command {
+    static final String[] MOVE_NAMES = { "TT", "TS", "IR", "HW", "VB", "MW" };
     private static int argumentNumber = 0;
     private static int thorsHammerDamage;
-    String SUCCESS_MESSAGE;
-    String FAILURE_MESSAGE;
     Player firstPlayer;
     Player secondPlayer;
 
-    public void godFavorOrder (Player playerOne, Player playerTwo) {
-        for (int i = 0; i < moveNames.length; i++) {
-            if (playerOne.getGodfavor().equals(moveNames[i])) {
+    /**
+     * determines which player uses godfavor first.
+     * @param playerOne player that started the game.
+     * @param playerTwo second player.
+     */
+    public void godFavorOrder(Player playerOne, Player playerTwo) {
+        for (int i = 0; i < MOVE_NAMES.length; i++) {
+            if (playerOne.getGodfavor().equals(MOVE_NAMES[i])) {
                 firstPlayer = playerOne;
                 secondPlayer = playerTwo;
                 break;
-            }
-            else if (playerTwo.getGodfavor().equals(moveNames[i])) {
+            } else if (playerTwo.getGodfavor().equals(MOVE_NAMES[i])) {
                 firstPlayer = playerTwo;
                 secondPlayer = playerOne;
                 break;
@@ -33,25 +39,25 @@ public class EvaluateCommand implements Command{
 
     /**
      * simulates the changes of using the fight-elements from rolling the dices.
-     * @param Sam a player
-     * @param Eddie the other player
+     * @param sam a player
+     * @param eddie the other player
      */
-    private void evaluateDices(Player Sam, Player Eddie) {
-        int theftS = Sam.getStealingPoints();
-        int theftE = Eddie.getStealingPoints();
+    private void evaluateDices(Player sam, Player eddie) {
+        int theftS = sam.getStealingPoints();
+        int theftE = eddie.getStealingPoints();
         theftS -= theftE;
         theftE -= (theftS + theftE);
-        if (theftS > 0 && Eddie.getGodPower() > 0) {
-            Sam.changeGP(Math.min(theftS, Eddie.getGodPower()));
-        } else if (theftE > 0 && Sam.getGodPower() > 0) {
-            Eddie.changeGP(Math.min(theftE, Sam.getGodPower()));
+        if (theftS > 0 && eddie.getGodPower() > 0) {
+            sam.changeGP(Math.min(theftS, eddie.getGodPower()));
+        } else if (theftE > 0 && sam.getGodPower() > 0) {
+            eddie.changeGP(Math.min(theftE, sam.getGodPower()));
         }
-        int damageReceivedS = damage(Eddie.getCloseAttack(), Sam.getCloseShield())
-                + damage(Eddie.getRangedAttack(), Sam.getRangedShield());
-        Sam.changeHP(damageReceivedS * (-1));
-        int damageReceivedE = damage(Sam.getCloseAttack(), Eddie.getCloseShield())
-                + damage(Sam.getRangedAttack(), Eddie.getRangedShield());
-        Eddie.changeHP(damageReceivedS * (-1));
+        int damageReceivedS = damage(eddie.getCloseAttack(), sam.getCloseShield())
+                + damage(eddie.getRangedAttack(), sam.getRangedShield());
+        sam.changeHP(damageReceivedS * (-1));
+        int damageReceivedE = damage(sam.getCloseAttack(), eddie.getCloseShield())
+                + damage(sam.getRangedAttack(), eddie.getRangedShield());
+        eddie.changeHP(damageReceivedE * (-1));
     }
     private int damage(int attack, int defense) {
         if (defense > attack) {
@@ -68,11 +74,10 @@ public class EvaluateCommand implements Command{
         }
         switch (attacker.getGodfavor()) {
             case "TT":
-                if (attacker.getGfLevel() >= defender.getGfLevel()) {
+                if (attacker.gfLevel >= defender.gfLevel) {
                     defender.setGodfavor("turn");
                 } else {
-                    ThrymrsTheft thief = new ThrymrsTheft();
-                    thief.execute(defender, defender.getGfLevel() - attacker.getGfLevel());
+                    Godfavour.godfavors.get(defender.getGodfavor()).execute(defender, defender.gfLevel - attacker.gfLevel);
                 }
             case "TS":
                 defender.changeHP(attacker.getGfEffect() * (-1));
@@ -96,10 +101,14 @@ public class EvaluateCommand implements Command{
                         + damage(defender.getRangedAttack(), attacker.getRangedShield());
                 damageReceived += thorsHammerDamage;
                 attacker.changeGP(damageReceived * attacker.getGfEffect());
-            case "turn":
+            default:
                 break;
         }
     }
+
+    /**
+     * resets the player values after the evaluation.
+     */
     public void reset() {
         Player playerOne = Player.getPlayerOne();
         Player playerTwo = Player.getPlayerTwo();
@@ -109,22 +118,24 @@ public class EvaluateCommand implements Command{
         playerOne.setGfEffect(0);
         playerOne.setCloseAttack(0);
         playerOne.setRangedAttack(0);
-        playerOne.setRangedShield(0);;
+        playerOne.setRangedShield(0);
         playerOne.setGodfavor("");
+        playerOne.gfLevel = 0;
 
         playerTwo.setStealingPoints(0);
         playerTwo.setCloseShield(0);
         playerTwo.setGfEffect(0);
         playerTwo.setCloseAttack(0);
         playerTwo.setRangedAttack(0);
-        playerTwo.setRangedShield(0);;
+        playerTwo.setRangedShield(0);
         playerTwo.setGodfavor("");
+        playerTwo.gfLevel = 0;
     }
 
     @Override
     public boolean execute(Player player, String[] commandArguments) {
         if (commandArguments.length == 0) {
-            FAILURE_MESSAGE = "illegal number of arguments!";
+            OUTPUT_MESSAGE[1] = "illegal number of arguments!";
             return false;
         }
         evaluateDices(Player.getPlayerOne(), Player.getPlayerTwo());
@@ -133,13 +144,13 @@ public class EvaluateCommand implements Command{
         useGodfavor(secondPlayer, firstPlayer);
         reset();
         if (Player.getPlayerOne().getHP() > 0 && Player.getPlayerOne().getHP() > 0) {
-            SUCCESS_MESSAGE = Player.playerOneTurn;
+            OUTPUT_MESSAGE[0] = Player.playerOneTurn;
         } else if (Player.getPlayerOne().getHP() <= 0 && Player.getPlayerTwo().getHP() <= 0) {
-            SUCCESS_MESSAGE = "draw";
+            OUTPUT_MESSAGE[0] = "draw";
         } else if (Player.getPlayerOne().getHP() <= 0) {
-            SUCCESS_MESSAGE = Player.getPlayerTwo().getName() + " wins!";
+            OUTPUT_MESSAGE[0] = Player.getPlayerTwo().getName() + " wins!";
         } else if (Player.getPlayerTwo().getHP() <= 0) {
-            SUCCESS_MESSAGE = Player.getPlayerOne().getName() + " wins!";
+            OUTPUT_MESSAGE[0] = Player.getPlayerOne().getName() + " wins!";
         }
         CommandHandler.phase = 0;
         return true;

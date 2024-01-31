@@ -1,16 +1,19 @@
-package Exercise_5.Commands.Godfavor;
+package five.commands.godfavor;
 
-import Exercise_5.model.Player;
+/**
+ * class for the god-favor HaimdallsWacht.
+ * @author uuxxo
+ */
 
-public class VarsBond extends Godfavour{
-    static final String sign = "VB";
+public class HaimdallsWacht extends Godfavour {
     static int level;
-    int cost[] = { 10, 14, 18 };
+    String sign = "HW";
+    int[] cost = { 4, 7, 10 };
     /**
-     * Var's Bond.
-     * Increases the health points by effect[level] per godpower used by the opposing player.
+     * Haimdall's Wacht effect: heal effect[level] health points per blocked damage point.
      */
     int[] effect = { 1, 2, 3 };
+
     /*@Override
     public boolean execute(Player player, String[] commandArguments) {
         level = Integer.parseInt(commandArguments[1]);

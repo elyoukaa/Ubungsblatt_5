@@ -1,5 +1,5 @@
-package Exercise_5;
-import Exercise_5.Commands.CommandHandler;
+package five;
+import five.commands.CommandHandler;
 public class Main {
     public static void main(String[] args) {
 

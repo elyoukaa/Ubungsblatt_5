@@ -1,11 +1,13 @@
-package Exercise_5.Commands.Godfavor;
+package five.commands.godfavor;
 
-import Exercise_5.model.Player;
-
-public class MimirsWisdom extends Godfavour{
-    static final String sign = "MW";
+/**
+ * class for god-favor Mimir's Wisdom.
+ * @author uuxxo
+ */
+public class MimirsWisdom extends Godfavour {
     static int level;
-    int cost[] = { 3, 5, 7 };
+    String sign = "MW";
+    int[] cost = { 3, 5, 7 };
     /**
      * Mimir's Wisdom effect: give effect[level] godpower.
      */
