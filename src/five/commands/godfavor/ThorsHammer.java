@@ -11,7 +11,7 @@ public class ThorsHammer extends Godfavour {
     /**
      * Thor's Hammer effect: deal effect[level] damage. Works even if health points reach zero.
      */
-    int[] effect = { 2, 4, 8 };
+    int[] effect = { 2, 5, 8 };
     @Override
     String getSign() {
         return sign;
