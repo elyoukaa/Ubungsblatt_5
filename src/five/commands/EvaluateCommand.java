@@ -109,9 +109,9 @@ public class EvaluateCommand implements Command {
     /**
      * resets the player values after the evaluation.
      */
-    public void reset() {
-        Player playerOne = Player.getPlayerOne();
-        Player playerTwo = Player.getPlayerTwo();
+    public void reset(Player playerOne, Player playerTwo) {
+        //Player playerOne = Player.getPlayerOne();
+        //Player playerTwo = Player.getPlayerTwo();
 
         playerOne.setStealingPoints(0);
         playerOne.setCloseShield(0);
@@ -146,7 +146,7 @@ public class EvaluateCommand implements Command {
         godFavorOrder(Player.getPlayerOne(), Player.getPlayerOne());
         useGodfavor(firstPlayer, secondPlayer);
         useGodfavor(secondPlayer, firstPlayer);
-        reset();
+        reset(Player.getPlayerOne(), Player.getPlayerTwo());
         if (Player.getPlayerOne().getHP() > 0 && Player.getPlayerOne().getHP() > 0) {
             PrintCommand printCommand = new PrintCommand();
             String[] arr = new String[0];
@@ -155,7 +155,7 @@ public class EvaluateCommand implements Command {
         } else if (Player.getPlayerOne().getHP() <= 0 && Player.getPlayerTwo().getHP() <= 0) {
             OUTPUT_MESSAGE[0] = "draw";
         } else if (Player.getPlayerOne().getHP() <= 0) {
-            OUTPUT_MESSAGE[0] = Player.getPlayerTwo().getName() + " wins!" + Player.getPlayerOne().getHP();
+            OUTPUT_MESSAGE[0] = Player.getPlayerTwo().getName() + " wins!";
         } else if (Player.getPlayerTwo().getHP() <= 0) {
             OUTPUT_MESSAGE[0] = Player.getPlayerOne().getName() + " wins!";
         }
