@@ -12,4 +12,8 @@ public class IdunsRegeneration extends Godfavour {
      * Idun's regeneration effect: heal effect[level] health points.
      */
     int[] effect = { 2, 4, 6 };
+    @Override
+    String getSign() {
+        return sign;
+    }
 }

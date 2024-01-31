@@ -12,11 +12,8 @@ public class MimirsWisdom extends Godfavour {
      * Mimir's Wisdom effect: give effect[level] godpower.
      */
     int[] effect = { 3, 5, 7 };
-    /*@Override
-    public boolean execute(Player player, String[] commandArguments) {
-        level = Integer.parseInt(commandArguments[1]);
-        setGodFavor(player, sign);
-        setEffect(player, effect[level - 1]);
-        return true;
-    }*/
+    @Override
+    String getSign() {
+        return sign;
+    }
 }

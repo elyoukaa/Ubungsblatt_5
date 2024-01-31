@@ -13,4 +13,8 @@ public class ThrymrsTheft extends Godfavour {
      * If the opponents attack reaches zero, it becomes ineffective.
      */
     int[] effect = { 1, 2, 3 };
+    @Override
+    String getSign() {
+        return sign;
+    }
 }

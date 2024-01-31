@@ -26,6 +26,9 @@ public class Godfavour implements Command {
     public int getArgumentNumber() {
         return ARGUMENT_NUMBER;
     }
+    String getSign() {
+        return sign;
+    }
     static void setGodFavor(Player player, String godfavor) {
         player.setGodfavor(godfavor);
     }
@@ -71,7 +74,7 @@ public class Godfavour implements Command {
      * @return true, if the changes were successful.
      */
     public boolean execute(Player player, int level) {
-        if (!player.playerGodFavor.contains(sign)) {
+        if (!player.playerGodFavor.contains(getSign())) {
             OUTPUT_MESSAGE[1] = "unable to use this move!" + sign;
             return false;
         }

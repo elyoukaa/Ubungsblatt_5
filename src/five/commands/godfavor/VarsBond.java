@@ -13,4 +13,8 @@ public class VarsBond extends Godfavour {
      * Increases the health points by effect[level] per godpower used by the opposing player.
      */
     int[] effect = { 1, 2, 3 };
+    @Override
+    String getSign() {
+        return sign;
+    }
 }

@@ -14,11 +14,8 @@ public class HaimdallsWacht extends Godfavour {
      */
     int[] effect = { 1, 2, 3 };
 
-    /*@Override
-    public boolean execute(Player player, String[] commandArguments) {
-        level = Integer.parseInt(commandArguments[1]);
-        setGodFavor(player, sign);
-        setEffect(player, effect[level - 1]);
-        return true;
-    }*/
+    @Override
+    String getSign() {
+        return sign;
+    }
 }
