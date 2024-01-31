@@ -272,5 +272,8 @@ public class Player {
      */
     public void changeHP(int change) {
         this.hp += change;
+        if (this.hp < 0) {
+            this.hp = 0;
+        }
     }
 }

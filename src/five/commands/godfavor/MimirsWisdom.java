@@ -9,7 +9,7 @@ public class MimirsWisdom extends Godfavour {
     String sign = "MW";
     int[] cost = { 3, 5, 7 };
     /**
-     * Mimir's Wisdom effect: give effect[level] godpower.
+     * Mimir's Wisdom effect: heal effect[level] hp per received damage.
      */
     int[] effect = { 3, 5, 7 };
     @Override
