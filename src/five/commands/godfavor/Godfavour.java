@@ -79,8 +79,8 @@ public class Godfavour implements Command {
         setEffect(player, effect[level - 1]);
         player.gfLevel = level;
         player.setCost(cost[level - 1]);
-        OUTPUT_MESSAGE[0] = Player.playersTurn();
         CommandHandler.phase++;
+        OUTPUT_MESSAGE[0] = Player.playersTurn();
         return true;
     }
 }
