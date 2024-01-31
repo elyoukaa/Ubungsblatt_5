@@ -149,16 +149,16 @@ public class EvaluateCommand implements Command {
         reset();
         PrintCommand printCommand = new PrintCommand();
         String[] arr = new String[0];
-        OUTPUT_MESSAGE[0] += "\n";
         printCommand.execute(player, arr);
+        OUTPUT_MESSAGE[0] += "\n";
         if (Player.getPlayerOne().getHP() > 0 && Player.getPlayerOne().getHP() > 0) {
             OUTPUT_MESSAGE[0] += Player.playerOneTurn;
         } else if (Player.getPlayerOne().getHP() <= 0 && Player.getPlayerTwo().getHP() <= 0) {
-            OUTPUT_MESSAGE[0] = "draw";
+            OUTPUT_MESSAGE[0] += "draw";
         } else if (Player.getPlayerOne().getHP() <= 0) {
-            OUTPUT_MESSAGE[0] = Player.getPlayerTwo().getName() + " wins!";
+            OUTPUT_MESSAGE[0] += Player.getPlayerTwo().getName() + " wins!";
         } else if (Player.getPlayerTwo().getHP() <= 0) {
-            OUTPUT_MESSAGE[0] = Player.getPlayerOne().getName() + " wins!";
+            OUTPUT_MESSAGE[0] += Player.getPlayerOne().getName() + " wins!";
         }
         CommandHandler.phase = 0;
         return true;
