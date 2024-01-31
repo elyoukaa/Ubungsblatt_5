@@ -198,7 +198,7 @@ public class Player {
      * @return name
      */
     public static Player getPlayerOne() {
-        return PLAYERS.getFirst();
+        return PLAYERS.get(0);
     }
 
     /**
@@ -206,7 +206,7 @@ public class Player {
      * @return name
      */
     public static Player getPlayerTwo() {
-        return PLAYERS.getLast();
+        return PLAYERS.get(1);
     }
 
     /**
