@@ -64,7 +64,7 @@ public class EvaluateCommand implements Command {
         eddie.changeHP(damageReceivedE * (-1));
     }
     private int damage(int attack, int defense) {
-        if (defense > attack) {
+        if (defense >= attack) {
             return 0;
         }
         return attack - defense;
