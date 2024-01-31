@@ -72,7 +72,7 @@ public class Godfavour implements Command {
      */
     public boolean execute(Player player, int level) {
         if (!player.playerGodFavor.contains(sign)) {
-            OUTPUT_MESSAGE[1] = "unable to use this move!";
+            OUTPUT_MESSAGE[1] = "unable to use this move!" + sign;
             return false;
         }
         setGodFavor(player, sign);
