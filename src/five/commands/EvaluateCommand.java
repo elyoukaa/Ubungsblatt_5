@@ -73,10 +73,10 @@ public class EvaluateCommand implements Command {
         if (attacker.getCost() > attacker.getGodPower()) {
             return;
         }
+        attacker.changeGP(attacker.getCost() * (-1));
         if (attacker.getHP() <= 0 && !(attacker.getGodfavor()).equals("TS")) {
             return;
         }
-        attacker.changeGP(attacker.getCost() * (-1));
         switch (attacker.getGodfavor()) {
             case "TT":
                 if (attacker.gfLevel >= defender.gfLevel) {
