@@ -31,8 +31,12 @@ public class TurnCommand implements Command {
         }
         player.setGodfavor("turn");
         player.setGfEffect(0);
-        OUTPUT_MESSAGE[0] = Player.playersTurn();
         CommandHandler.phase++;
+        if (CommandHandler.phase == 3) {
+            OUTPUT_MESSAGE[0] = Player.playersTurn();
+        } else {
+            OUTPUT_MESSAGE[0] = "OK, all players are now ready to evaluate!";
+        }
         return true;
     }
 }
